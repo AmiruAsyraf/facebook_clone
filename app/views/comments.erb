@@ -1,0 +1,18 @@
+<div class="container">
+
+   <h1>Comments:</h1>
+
+      <% @comment.each do |x|%>
+   <tr>
+      <td><p> <%=x.content%></p></td>
+      <td><p> <a href = "/post/<%= @post.id %>/comment/vote/<%= x.id %>"><%=x.commentvotes.first.votecount%></a></p></td>
+  </tr>
+    <%end%>
+
+ <form action="/newcomment/<%= @post.id %>" method="post">
+    <label>Title</label>
+    <input type="text" name="content">
+    <input type="submit" value="Add Comment">
+
+
+</div>

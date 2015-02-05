@@ -1,0 +1,24 @@
+<div class="container">
+   <center> <h1><a href = "/page/<%= @user.name %>">Welcome <%= @user.name %></a></h1>
+
+<h2>All Posts</h2></center>
+
+  <form action="/post/new" method="post">
+     <label>Title</label>
+     <input type="text" name="post[title]">
+     <label>Post</label>
+     <input type="text" name="post[body]">
+     <input type="submit" value="Add New Post">
+
+<table>
+      <% @post.each do |x|%>
+  <tr>
+      <td><b><a href="/comment/<%= x.id %>"><%=x.title%></a></b></td>
+      <td><p><i> <%=x.body%></i></p></td>
+      <td><p> <a href = "/post/vote/<%= x.id %>"><%= x.postvotes.first.votecount %></a></p></td>
+  </tr>
+    <%end%>
+
+</table>
+
+</div>
